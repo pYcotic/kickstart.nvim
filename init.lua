@@ -109,6 +109,9 @@ vim.keymap.set('n', '<leader>bv', '<cmd>Ex<CR>', { desc = 'Exit the buffer into 
 vim.keymap.set('n', '<leader>bn', '<cmd>bnext<CR>', { desc = 'Jump to next buffer' })
 vim.keymap.set('n', '<leader>bN', '<cmd>bprevious<CR>', { desc = 'Jump to previous buffer' })
 
+vim.keymap.set({ 'n', 'x' }, '<leader>p', '"0p', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>P', '"0P', { noremap = true, silent = true })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -240,7 +243,7 @@ require('lazy').setup({
       -- Document existing key chains
       spec = {
         { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-        { '<leader>p', group = '[P]revious view', mode = { 'n', 'x' } },
+        { '<leader>v', group = 'Previous [V]iew', mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
