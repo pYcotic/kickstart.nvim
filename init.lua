@@ -112,6 +112,16 @@ vim.keymap.set('n', '<leader>bN', '<cmd>bprevious<CR>', { desc = 'Jump to previo
 vim.keymap.set({ 'n', 'x' }, '<leader>p', '"0p', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'x' }, '<leader>P', '"0P', { noremap = true, silent = true })
 
+-- Move line up in Normal mode
+-- Move line down in Normal mode
+vim.keymap.set('n', 'J', ':m .+1<CR>==', { desc = 'Move line down in normal mode' })
+vim.keymap.set('n', 'K', ':m .-2<CR>==', { desc = 'Move line up in normal mode' })
+
+-- Move line up in Visual mode
+-- Move line down in Visual mode
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line down in visual mode' })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line up in visual mode' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -872,7 +882,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'pYcotic.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
