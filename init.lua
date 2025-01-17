@@ -105,7 +105,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Keybinds to navigate the buffer and directories
 -- set quick page change
-vim.keymap.set('n', '<leader>bv', '<cmd>Ex<CR>', { desc = 'Exit the buffer into the current directory' })
+vim.keymap.set('n', '<leader>bv', '<cmd>w<CR><cmd>Ex<CR>', { desc = 'Exit the buffer into the current directory' })
 vim.keymap.set('n', '<leader>bn', '<cmd>bnext<CR>', { desc = 'Jump to next buffer' })
 vim.keymap.set('n', '<leader>bN', '<cmd>bprevious<CR>', { desc = 'Jump to previous buffer' })
 
@@ -657,7 +657,8 @@ require('lazy').setup({
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        php = { "intelephense", "php-pretty", "phpactor",stop_after_first = true:}
       },
     },
   },
