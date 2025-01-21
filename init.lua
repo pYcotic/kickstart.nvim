@@ -122,6 +122,10 @@ vim.keymap.set('n', 'K', ':m .-2<CR>==', { desc = 'Move line up in normal mode' 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line down in visual mode' })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line up in visual mode' })
 
+-- yank to Clipboard
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
+vim.keymap.set('n', '<leader>Y', [["+Y]])
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
