@@ -68,7 +68,7 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 30
+vim.opt.scrolloff = 10
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -668,29 +668,30 @@ require('lazy').setup({
     event = 'InsertEnter',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
-      {
-        'L3MON4D3/LuaSnip',
-        build = (function()
-          -- Build Step is needed for regex support in snippets.
-          -- This step is not supported in many windows environments.
-          -- Remove the below condition to re-enable on windows.
-          if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-            return
-          end
-          return 'make install_jsregexp'
-        end)(),
-        dependencies = {
-          -- `friendly-snippets` contains a variety of premade snippets.
-          --    See the README about individual language/framework/plugin snippets:
-          --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
-        },
-      },
+      -- {
+      'L3MON4D3/LuaSnip',
+      -- build = (function()
+      --   -- Build Step is needed for regex support in snippets.
+      --   -- This step is not supported in many windows environments.
+      --   -- Remove the below condition to re-enable on windows.
+      --   if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+      --     return
+      --   end
+      --   return 'make install_jsregexp'
+      -- end)(),
+      -- dependencies = {
+      --   -- `friendly-snippets` contains a variety of premade snippets.
+      --   --    See the README about individual language/framework/plugin snippets:
+      --   --    https://github.com/rafamadriz/friendly-snippets
+      --   -- {
+      --   --   'rafamadriz/friendly-snippets',
+      --   --   config = function()
+      --   --     require('luasnip.loaders.from_vscode').lazy_load()
+      --   --   end,
+      --   -- },
+      -- },
+      -- },
+      'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
 
       -- Adds other completion capabilities.
@@ -888,7 +889,7 @@ require('lazy').setup({
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
-  --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
+  --  Uncomment the following line and add your plugins to `lua/pYcotic/plugins/*.lua` to get going.
   { import = 'pYcotic.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
