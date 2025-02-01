@@ -19,7 +19,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+-- vim.opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -64,7 +64,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
--- Show which line your cursor is on
+-- Show which line and column your cursor is on
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 
@@ -115,7 +115,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Keybinds to navigate the buffer and directories
 -- set quick page change
-vim.keymap.set('n', '<leader>bv', '<cmd>w<CR><cmd>Ex<CR>', { desc = 'Exit the buffer into the current directory' })
+vim.keymap.set('n', '<leader>bv', '<cmd>Ex<CR>', { desc = 'Exit the buffer into the current directory' })
 vim.keymap.set('n', '<leader>bn', '<cmd>bnext<CR>', { desc = 'Jump to next buffer' })
 vim.keymap.set('n', '<leader>bN', '<cmd>bprevious<CR>', { desc = 'Jump to previous buffer' })
 
@@ -659,7 +659,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        -- local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true }
         local lsp_format_opt
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'never'
