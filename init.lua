@@ -5,9 +5,9 @@ vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
 
-require './lua/pYcotic/settings/opts'
-require './lua/pYcotic/keymaps/keymaps'
-require './lua/pYcotic/autocommands/autocommands'
+require 'pYcotic/settings/opts'
+require 'pYcotic/keymaps/keymaps'
+require 'pYcotic/autocommands/autocommands'
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -21,6 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   { import = 'pYcotic.plugins' },
+  { import = 'pYcotic.language_support' },
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
