@@ -66,9 +66,19 @@ vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- autoread when changed out of vim
+vim.opt.autoread = true
+
+-- NOTE: testing this one out
+vim.opt.autowrite = true
+
+-- Upholds indent from prev line
+vim.opt.autoindent = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
