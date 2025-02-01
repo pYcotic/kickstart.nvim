@@ -138,14 +138,14 @@ return {
     })
 
     -- Change diagnostic symbols in the sign column (gutter)
-    -- if vim.g.have_nerd_font then
-    --   local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
-    --   local diagnostic_signs = {}
-    --   for type, icon in pairs(signs) do
-    --     diagnostic_signs[vim.diagnostic.severity[type]] = icon
-    --   end
-    --   vim.diagnostic.config { signs = { text = diagnostic_signs } }
-    -- end
+    if vim.g.have_nerd_font then
+      local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
+      local diagnostic_signs = {}
+      for type, icon in pairs(signs) do
+        diagnostic_signs[vim.diagnostic.severity[type]] = icon
+      end
+      vim.diagnostic.config { signs = { text = diagnostic_signs } }
+    end
 
     -- LSP servers and clients are able to communicate to each other what features they support.
     --  By default, Neovim doesn't support everything that is in the LSP specification.
@@ -187,7 +187,7 @@ return {
               callSnippet = 'Replace',
             },
             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            -- diagnostics = { disable = { 'missing-fields' } },
+            diagnostics = { disable = { 'missing-fields' } },
           },
         },
       },
@@ -206,13 +206,16 @@ return {
     --
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
+    require('mason-tool-installer').setup { 'stylua', 'pretty-php' }
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      'stylua', -- Used to format Lua code
+      'lua_ls',
+      'intelephense',
     })
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
+      ensure_installed = ensure_installed,
+      automatic_installation = true,
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
